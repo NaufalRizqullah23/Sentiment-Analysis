@@ -6,8 +6,6 @@ tweets = []
 limit = 10000
 
 for tweet in sntwitter.TwitterSearchScraper(query).get_items():
-    # print(vars(tweet))
-    # break
 
     if len(tweets) == limit:
         break
