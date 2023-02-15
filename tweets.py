@@ -6,7 +6,7 @@ query2 = "(to:PendisKemenag) (@PendisKemenag)"
 tweets = []
 limit = 10000
 
-for tweet in sntwitter.TwitterSearchScraper(query).get_items():
+for tweet in sntwitter.TwitterSearchScraper(query2).get_items():
 
     if len(tweets) == limit:
         break
