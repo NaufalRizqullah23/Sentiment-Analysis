@@ -1,7 +1,8 @@
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 
-query = "(@PendisKemenag) until:2023-01-25 since:2022-01-01"
+query = "(@PendisKemenag)"
+query2 = "(to:PendisKemenag) (@PendisKemenag)"
 tweets = []
 limit = 10000
 
@@ -14,6 +15,6 @@ for tweet in sntwitter.TwitterSearchScraper(query).get_items():
 
 df = pd.DataFrame(tweets, columns=['Date', 'Username', 'Tweet'])
 
-filename = 'Scrape.csv'
+filename = 'onlypendis.csv'
 
 df.to_csv(filename, index=False)
