@@ -5,7 +5,7 @@ import nltk
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
-df = pd.read_csv('thedataset2.csv', encoding='ISO-8859-1')
+df = pd.read_csv('adjusted_instagram.csv', encoding='ISO-8859-1')
 
 
 def preprocess_text(text):
@@ -30,7 +30,7 @@ def preprocess_text(text):
 
 
 # apply the preprocessing to 'Tweet' column
-df['Tweet'] = df['Tweet'].apply(preprocess_text)
+df['Tweets'] = df['Tweets'].apply(preprocess_text)
 
 # save the dataset to CSV file
-df.to_csv('pre_dataset2.csv', index=False)
+df.to_csv('pre_additional_dataset.csv', index=False)
