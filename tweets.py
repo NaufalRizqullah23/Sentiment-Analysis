@@ -6,17 +6,19 @@ query2 = "(to:PendisKemenag) (@PendisKemenag)"
 query3 = "Moderasi Beragama until:2023-02-16 since:2022-01-01"
 query4 = "Pertamina"
 tweets = []
-limit = 5000
+limit = 10
 
 for tweet in sntwitter.TwitterSearchScraper(query4).get_items():
 
     if len(tweets) == limit:
         break
     else:
-        tweets.append([tweet.date, tweet.user.username, tweet.content])
+        # tweets.append([tweet.date, tweet.user.username, tweet.content])
+        tweets.append(tweet.content)
+        print(tweets)
 
-df = pd.DataFrame(tweets, columns=['Date', 'Username', 'Tweet'])
+# df = pd.DataFrame(tweets, columns=['Date', 'Username', 'Tweet'])
 
-filename = 'dataset2.csv'
+# filename = 'dataset2.csv'
 
-df.to_csv(filename, index=False)
+# df.to_csv(filename, index=False)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sentiment Analysis</h1>
+      {% for result in results %}
+      <div class="card my-3">
+        <div class="card-header">Tweet {{loop.index}}</div>
+        <div class="card-body">
+          <!-- <h6 class="card-title">{{result}}</h6> -->
+          <div class="card-text">
+            <p>Sentiment Analysis Result:</p>
+            <p>{{result}}</p>
+            {% if sentiment == -1 %}
+            <p class="card-text text-danger">NEGATIF</p>
+            {% elif sentiment == 0 %}
+            <p class="card-text text-secondary">NETRAL</p>
+            {% elif sentiment == 1 %}
+            <p class="card-text text-success">POSITIF</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
