@@ -42,6 +42,12 @@ def predict():
 
     for i, tweet in enumerate(scraped_tweets):
         sentiment = model.predict(X[i])
+        # if sentiment[0] == -1:
+        #     sentiment[0] = 'NEGATIF'
+        # elif sentiment[0] == 0:
+        #     sentiment[0] = 'NETRAL'
+        # elif sentiment[0] == 1:
+        #     sentiment[0] = 'POSITIF'
         results.append((tweet, sentiment[0]))
     return render_template('result.html', results=results)
 

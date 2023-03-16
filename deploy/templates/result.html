@@ -19,13 +19,14 @@
         <div class="card-body">
           <!-- <h6 class="card-title">{{result}}</h6> -->
           <div class="card-text">
+            <p>{{result[0]}}</p>
             <p>Sentiment Analysis Result:</p>
-            <p>{{result}}</p>
-            {% if sentiment == -1 %}
+            <!-- <p>{{result[1]}}</p> -->
+            {% if result[1] == -1 %}
             <p class="card-text text-danger">NEGATIF</p>
-            {% elif sentiment == 0 %}
+            {% elif result[1] == 0 %}
             <p class="card-text text-secondary">NETRAL</p>
-            {% elif sentiment == 1 %}
+            {% elif result[1] == 1 %}
             <p class="card-text text-success">POSITIF</p>
             {% endif %}
           </div>
