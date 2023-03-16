@@ -5,6 +5,7 @@ import nltk
 from joblib import load
 from flask import Flask, render_template, request
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from collections import Counter
 
 model = load('sentiment_analysisV2.pkl')
 vectorizer = load('vectorizer.pkl')
@@ -49,7 +50,13 @@ def predict():
         # elif sentiment[0] == 1:
         #     sentiment[0] = 'POSITIF'
         results.append((tweet, sentiment[0]))
-    return render_template('result.html', results=results)
+
+        label_dict = {-1: 'NEGATIF', 0: 'NETRAL', 1: 'POSITIF'}
+        labeled_results = [label_dict[result[1]] for result in results]
+        sentiment_count = Counter(labeled_results)
+
+        most_common_sentiment = sentiment_count.most_common(1)[0][0]
+    return render_template('result.html', results=results, most_common_sentiment=most_common_sentiment, query=query)
 
 
 if __name__ == '__main__':

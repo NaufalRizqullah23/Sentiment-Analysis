@@ -13,6 +13,23 @@
   <body>
     <div class="container">
       <h1>Sentiment Analysis</h1>
+      <div>
+        <br />
+        <br />
+        <div><h5>Kesimpulan Sentiment mengenai "{{query}}"</h5></div>
+        <div>
+          {% if most_common_sentiment == 'NEGATIF' %}
+          <h1 class="text-danger">{{most_common_sentiment}}</h1>
+          {% elif most_common_sentiment == 'NETRAL' %}
+          <h1 class="text-secondary">{{most_common_sentiment}}</h1>
+          {% elif most_common_sentiment == 'POSITIF' %}
+          <h1 class="text-success">{{most_common_sentiment}}</h1>
+          {% endif %}
+          <!-- <h5 class="card-title">{{most_common_sentiment}}</h5> -->
+        </div>
+        <br />
+        <br />
+      </div>
       {% for result in results %}
       <div class="card my-3">
         <div class="card-header">Tweet {{loop.index}}</div>
