@@ -23,7 +23,6 @@
             },
             fontFamily: {
               body: ["Lato", "Montserrat"],
-              mont: [],
             },
           },
         },
@@ -33,15 +32,15 @@
   </head>
   <body>
     <div
-      class="flex flex-row bg-dGreen h-[100px] w-[100%] items-center pl-[23px]"
+      class="flex flex-row bg-dGreen w-full items-center pl-6 py-5"
     >
       <img src="static/Logo.png" alt="logo" />
-      <span class="text-white font-bold font-body text-[32px] ml-[34px]"
+      <span class="text-white font-bold font-body text-3xl ml-8"
         >Sentiment Analysis</span
       >
     </div>
     <div
-      class="bg-lCream flex justify-between items-center space-x-[80px] px-[80px] py-[40px]"
+      class="bg-lCream flex justify-between items-center space-x-20 px-20 py-10"
     >
       <div class="flex-1">
         <span class="font-body-Lato text-[64px] font-bold text-lGreen"
@@ -54,7 +53,7 @@
             <form action="/predict" method="POST">
               <input
                 type="text"
-                class="input w-full px-[35px] py-8 focus:outline-none text-xl text-lGreen placeholder:text-lGreen placeholder:text-xl rounded-[32px]"
+                class="input w-full px-9 py-8 focus:outline-none text-xl text-lGreen placeholder:text-lGreen placeholder:text-xl rounded-3xl"
                 placeholder="{{query}}"
                 id="text"
                 name="text"
@@ -62,38 +61,38 @@
               />
               <div class="absolute right-8 top-1/2 transform -translate-y-1/2">
                 <button
-                  class="bg-lGreen text-white text-xl px-[35px] py-4 rounded-2xl capitalize" type="submit"
+                  class="bg-lGreen text-white text-xl px-9 py-4 rounded-xl capitalize" type="submit"
                 >
                   Cari
                 </button>
             </form>
             </div>
           </div>
-          <p class="text-lGreen text-[24px] font-body-Montserrat font-medium">
+          <p class="text-lGreen text-2xl font-body-Montserrat font-medium">
             Sentiment Analysis akan mengambil data media sosial secara dinamis
           </p>
         </div>
       </div>
     </div>
-    <div class="flex flex-col bg-lGreen py-[40px] px-[80px] space-y-5 items-start w-full">
-      <div class="flex-1 font-body-Lato text-[64px] text-white font-bold">Anda Mencari Tentang "{{query}}"</div>
-      <div class="flex-1 font-body-Montserrat text-[24px] text-white font-medium ">Hasil Analisis Sentimen Mengenai "{{query}}" saat ini adalah <span class="underline">{{most_common_sentiment}}</span></div>
+    <div class="flex flex-col bg-lGreen py-10 px-20 space-y-5 items-start w-full">
+      <div class="flex-1 font-body-Lato text-6xl text-white font-bold">Anda Mencari Tentang "{{query}}"</div>
+      <div class="flex-1 font-body-Montserrat text-2xl text-white font-medium ">Hasil Analisis Sentimen Mengenai "{{query}}" saat ini adalah <span class="underline">{{most_common_sentiment}}</span></div>
       <br>
       <br>
       {% for result in results %}
         {% if result[1] == -1 %}
-        <div class="flex-1 space-y-2 divide-y-2 bg-nRed rounded-2xl px-3 font-body-Montserrat text-white w-full pt-2 pb-5">
-          <div class="text-xl font-medium">Tweet Negatif</div>
+        <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-nRed text-white">
+          <div class="text-xl font medium">Tweet Negatif</div>
           <div class="text-base">{{result[0]}}</div>
         </div>
         {% elif result[1] == 0 %}
-        <div class="flex-1 space-y-2 bg-white rounded-2xl px-3 divide-y-2 font-body-Montserrat text-prim w-full pt-2 pb-5">
-          <div class="text-xl font-medium">Tweet Netral</div>
+        <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-white text-prim">
+          <div class="text-xl font medium">Tweet Netral</div>
           <div class="text-base">{{result[0]}}</div>
         </div>
         {% elif result[1] == 1 %}
-        <div class="flex-1 space-y-2 bg-dGreen rounded-2xl px-3 divide-y-2 font-body-Montserrat text-white w-full pt-2 pb-5">
-          <div class="text-xl font-medium">Tweet Positif</div>
+        <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-dGreen text-white">
+          <div class="text-xl font medium">Tweet Positif</div>
           <div class="text-base">{{result[0]}}</div>
         </div>
         {% endif %}

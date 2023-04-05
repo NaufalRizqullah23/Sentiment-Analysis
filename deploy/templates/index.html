@@ -21,7 +21,6 @@
             },
             fontFamily: {
               body: ["Lato", "Montserrat"],
-              mont: [],
             },
           },
         },
@@ -53,15 +52,15 @@
       </form>
     </div> -->
     <div
-      class="flex flex-row bg-dGreen h-[100px] w-[100%] items-center pl-[23px]"
+      class="flex flex-row bg-dGreen py-5 w-full items-center pl-6"
     >
       <img src="static/Logo.png" alt="logo" />
-      <span class="text-white font-bold font-body text-[32px] ml-[34px]"
+      <span class="text-white font-bold font-body text-3xl ml-8"
         >Sentiment Analysis</span
       >
     </div>
     <div
-      class="bg-lCream flex justify-between items-center space-x-[80px] px-[80px] py-[40px]"
+      class="bg-lCream flex justify-between items-center space-x-20 px-20 py-10"
     >
       <div class="flex-1">
         <span class="font-body-Lato text-[64px] font-bold text-lGreen"
@@ -74,7 +73,7 @@
             <form action="/predict" method="POST">
               <input
                 type="text"
-                class="input w-full px-[35px] py-8 focus:outline-none text-xl text-lGreen placeholder:text-lGreen placeholder:text-xl rounded-[32px]"
+                class="input w-full px-9 py-8 focus:outline-none text-xl text-lGreen placeholder:text-lGreen placeholder:text-xl rounded-3xl"
                 placeholder="Masukan Kata Kunci"
                 id="text"
                 name="text"
@@ -82,14 +81,14 @@
               />
               <div class="absolute right-8 top-1/2 transform -translate-y-1/2">
                 <button
-                  class="bg-lGreen text-white text-xl px-[35px] py-4 rounded-2xl capitalize" type="submit"
+                  class="bg-lGreen text-white text-xl px-9 py-4 rounded-2xl capitalize" type="submit"
                 >
                   Cari
                 </button>
             </form>
             </div>
           </div>
-          <p class="text-lGreen text-[24px] font-body-Montserrat font-medium">
+          <p class="text-lGreen text-2xl font-body-Montserrat font-medium">
             Sentiment Analysis akan mengambil data media sosial secara dinamis
           </p>
         </div>
