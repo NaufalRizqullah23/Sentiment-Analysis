@@ -83,19 +83,59 @@
         <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-nRed text-white">
           <div class="text-xl font medium">Tweet Negatif</div>
           <div class="text-base">{{result[0]}}</div>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="1">Positif</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="0">Netral</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="-1">Negatif</button>
         </div>
         {% elif result[1] == 0 %}
         <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-white text-prim">
           <div class="text-xl font medium">Tweet Netral</div>
           <div class="text-base">{{result[0]}}</div>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="1">Positif</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="0">Netral</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="-1">Negatif</button>
         </div>
         {% elif result[1] == 1 %}
         <div class="flex-1 space-y-2 divide-y-2 rounded-2xl px-3 font-body-Montserrat w-full pt-2 pb-5 bg-dGreen text-white">
           <div class="text-xl font medium">Tweet Positif</div>
           <div class="text-base">{{result[0]}}</div>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="1">Positif</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="0">Netral</button>
+          <button class="feedback-button" data-tweet="{{ result[0] }}" data-predicted-sentiment="{{ result[1] }}" data-feedback="-1">Negatif</button>
         </div>
         {% endif %}
       {% endfor %}
     </div>
+    <script>
+      const feedbackButtons = document.querySelectorAll('.feedback-button');
+
+      feedbackButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tweet = button.getAttribute('data-tweet');
+          const predictedSentiment = button.getAttribute('data-predicted-sentiment');
+          const feedbackValue = button.getAttribute('data-feedback');
+
+          // Send feedback using fetch API
+          fetch('/feedback', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              tweet: tweet,
+              predicted_sentiment: predictedSentiment,
+              feedback: feedbackValue
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Feedback submitted successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error submitting feedback:', error);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
